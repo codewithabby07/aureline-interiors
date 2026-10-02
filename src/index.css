@@ -5,6 +5,9 @@
 @layer base {
   html {
     color-scheme: light;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
   }
   
   body {
@@ -13,11 +16,25 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  #root {
+    overflow-x: hidden;
+    width: 100%;
   }
 
   h1, h2, h3, h4, h5, h6, .font-serif {
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-feature-settings: "kern" 1, "liga" 1;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  p, span, a, button, input, textarea, select {
+    overflow-wrap: break-word;
   }
 }
 
@@ -26,14 +43,25 @@
   transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.7s ease;
 }
 
-.img-editorial:hover {
-  transform: scale(1.025);
+@media (hover: hover) {
+  .img-editorial:hover {
+    transform: scale(1.025);
+  }
 }
 
-/* Custom subtle scrollbar */
+/* Hide scrollbar for category tabs on mobile */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom subtle scrollbar for desktop */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
